@@ -15,13 +15,42 @@ function App() {
     { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
   ]
   );
+  const [filterContact, setFilterContact] = useState();
+  
+  const filterChange = (evt) => {
+      const find = evt.target.value;
+      setFilterContact(find);
+  };
+ 
+  const findContacts = contacts.filter(item =>
+    item.name.toLowerCase().includes(filterContact)
+  );
+  setConacts(findContacts);
+  
+
+  // if (filterContact) {
+  //   const findContacts = contacts.filter(item =>
+  //   item.name.toLowerCase().includes(filterContact)
+  //   );
+  //   return setConacts(findContacts);
+  // }
+
+  // const findContacts = contacts.filter(item =>
+  //   item.name.toLowerCase().includes(filterContact)
+  // );
+  // setConacts(findContacts);
+
+  // setConacts(
+  //   contacts.filter(item =>
+  //     item.name.toLowerCase().includes(filterContact)
+  //   ));
 
 
   return (
     <div className='app'>
       <h1 className='app_title'>Phonebook</h1>
         <ContactForm />
-        <SearchBox />
+        <SearchBox onChange={filterChange} />
         <ContactList dataContacts={contacts} />
     </div>
 
