@@ -12,7 +12,7 @@ const Contact = ({ name, phone, id, deleteContact }) => {
                     <ImPhone className={s.contact_svg} />
                     {   phone}</li>
             </ul>
-            <button className={s.contact_btn} onClick={deleteContact}>Delete</button>
+            <button className={s.contact_btn} onClick={() => deleteContact(id)}>Delete</button>
         </div>
     )
 
