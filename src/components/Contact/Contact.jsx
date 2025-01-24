@@ -1,7 +1,7 @@
 import { ImPhone, ImUser } from "react-icons/im";
 import s from './Contact.module.css'
 
-const Contact = ({ name, phone }) => {
+const Contact = ({ name, phone, id, deleteContact }) => {
     return (
         <div className={s.contact_wrapper}>
             <ul className={s.contact}>
@@ -12,7 +12,7 @@ const Contact = ({ name, phone }) => {
                     <ImPhone className={s.contact_svg} />
                     {   phone}</li>
             </ul>
-            <button className={s.contact_btn}>Delete</button>
+            <button className={s.contact_btn} onClick={deleteContact}>Delete</button>
         </div>
     )
 

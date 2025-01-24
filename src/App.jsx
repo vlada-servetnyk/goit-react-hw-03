@@ -31,7 +31,10 @@ function App() {
     item.name.toLowerCase().includes(filterContact || '')
   );
 
-  console.log(contacts);
+  const deleteContact = (e) => {
+    const deleteItem = e.target.closest("li");
+    deleteItem.remove();
+  }
     
 
   return (
@@ -39,7 +42,7 @@ function App() {
       <h1 className='app_title'>Phonebook</h1>
         <ContactForm onAddContact={addContact} />
         <SearchBox onChange={filterChange} />
-        <ContactList dataContacts={findContacts} />
+        <ContactList dataContacts={findContacts} deleteContact={deleteContact} />
     </div>
 
   )
