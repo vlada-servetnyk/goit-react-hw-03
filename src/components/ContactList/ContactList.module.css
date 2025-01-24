@@ -1,8 +1,4 @@
-/* .list_wrapper {
-    width: 100%;
-    padding: 5px;
-    display: flex;
-} */
+
 .contacts_list {
     display: flex;
     align-items: flex-start;

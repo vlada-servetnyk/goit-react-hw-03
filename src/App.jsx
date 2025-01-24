@@ -7,7 +7,7 @@ import SearchBox from './components/SearchBox/SearchBox'
 
 function App() {
 
-  const [contacts, setConacts] = useState(
+  const [contacts, setContacts] = useState(
     [
     { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
     { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
@@ -15,6 +15,11 @@ function App() {
     { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
   ]
   );
+
+  const addContact = (newContact) => {
+    setContacts((prevContacts) => [...prevContacts, newContact]);
+  };
+
   const [filterContact, setFilterContact] = useState();
   
   const filterChange = (evt) => {
@@ -23,35 +28,18 @@ function App() {
   };
  
   const findContacts = contacts.filter(item =>
-    item.name.toLowerCase().includes(filterContact)
+    item.name.toLowerCase().includes(filterContact || '')
   );
-  setConacts(findContacts);
-  
 
-  // if (filterContact) {
-  //   const findContacts = contacts.filter(item =>
-  //   item.name.toLowerCase().includes(filterContact)
-  //   );
-  //   return setConacts(findContacts);
-  // }
-
-  // const findContacts = contacts.filter(item =>
-  //   item.name.toLowerCase().includes(filterContact)
-  // );
-  // setConacts(findContacts);
-
-  // setConacts(
-  //   contacts.filter(item =>
-  //     item.name.toLowerCase().includes(filterContact)
-  //   ));
-
+  console.log(contacts);
+    
 
   return (
     <div className='app'>
       <h1 className='app_title'>Phonebook</h1>
-        <ContactForm />
+        <ContactForm onAddContact={addContact} />
         <SearchBox onChange={filterChange} />
-        <ContactList dataContacts={contacts} />
+        <ContactList dataContacts={findContacts} />
     </div>
 
   )
